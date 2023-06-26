@@ -1,6 +1,6 @@
-var a = 5;
-var b = 3;
-var c = 2;
+var a = 0;
+var b = 0;
+var c = -2;
 
 if (a > b) {
   [a, b] = [b, a];
