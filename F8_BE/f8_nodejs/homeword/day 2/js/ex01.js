@@ -14,7 +14,7 @@ if (klm > 0) {
 
   var receive = price * klm;
 
-  if (receive > 120) {
+  if (klm > 120) {
     receive -= receive * 0.1;
   }
 
