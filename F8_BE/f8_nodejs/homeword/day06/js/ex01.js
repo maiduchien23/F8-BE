@@ -44,7 +44,7 @@ console.log(
 //Bài 2
 var number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function isPrime(n) {
-  if (n < 0) {
+  if (n < 2) {
     return false;
   }
   for (var i = 2; i <= Math.sqrt(n); i++) {
