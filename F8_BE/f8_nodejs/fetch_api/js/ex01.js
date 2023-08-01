@@ -46,5 +46,39 @@ var postData = async function (data) {
   var data = await res.json();
   console.log(data);
 };
+var data = {
+  name: "Hoàng An",
+  email: "contact@fullstack.edu.vn",
+};
 
 postData();
+
+
+//x-www-form-urlencoded: name=Hoàng An&email=contact@fullstack.edu.vn
+/*
+POST dữ liệu lên SERVER
+
+1. Url
+2. Method
+3. Headers
+- Content-Type
+4. Body (Data)
+*/
+
+var getLocation = async function () {
+  var res = await fetch(
+    "https://ipfind.co/me?auth=50e887ce-e3bb-4f00-a9b9-667597db5539",
+  );
+  var data = await res.json();
+  console.log(data);
+};
+
+getLocation();
+
+/*
+Xác thực API
+
+1. API Key
+2. Bearer Token
+3. OAuth 2.0
+*/

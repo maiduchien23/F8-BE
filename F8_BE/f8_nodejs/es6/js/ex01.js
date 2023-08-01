@@ -68,11 +68,67 @@ function getTotal(a, b) {
 
 getTotal(1, 2);
 
+// const users = {
+//   name: "Hoàng An",
+//   email: "hoangan.web@gmail.com",
+// };
+
+// users.name = "Hoàng An F8";
+
+// console.log(users);
+
+//1. Dustructuring
+
 const users = {
-  name: "Hoàng An",
+  name: "Hoang An",
   email: "hoangan.web@gmail.com",
+  age: 31,
+  address: "Nam Tu Liem - Ha Noi",
+  province: undefined,
 };
 
-users.name = "Hoàng An F8";
+const { name: username, email, province = "Ha Noi", ...rest } = users;
 
-console.log(users);
+// console.log(username);
+// console.log(email);
+// console.log(province);
+// console.log(rest);
+
+const customers = ["Hoang An", "hoangan.web@gmail.com", 31, "Ha Noi"];
+
+const [customerName, customerEmail, ...last] = customers;
+console.log(`Name: ${customerName}`);
+console.log(`Email: ${customerEmail}`);
+console.log(`Last:`, last);
+
+const getMessage = function ({ name, email }) {
+  console.log(name, email);
+};
+
+getMessage({
+  name: "Hoang An",
+  email: "hoangan.web@gmail.com",
+});
+
+const posts = [
+  {
+    id: 1,
+    title: "Bai 1",
+  },
+  {
+    id: 2,
+    title: "Bai 2",
+  },
+  {
+    id: 3,
+    title: "Bai 3",
+  },
+];
+
+const html = posts
+  .map(function ({ id, title: postTitle }) {
+    return `<h3>${id} - ${postTitle}</h3>`;
+  })
+  .join("");
+
+document.write(html);
