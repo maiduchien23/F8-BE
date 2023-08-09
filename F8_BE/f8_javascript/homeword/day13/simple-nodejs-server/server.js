@@ -1,6 +1,6 @@
 // src/server.js
 const http = require("http");
-const Render = require("./src/render/Render");
+const Render = require("../simple-nodejs-server/src/render/Render");
 
 const server = http.createServer(async (req, res) => {
   if (req.url === "/") {
