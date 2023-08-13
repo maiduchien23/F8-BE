@@ -77,11 +77,24 @@ class Products extends Base {
   find = (req, res) => {
     const cookie = req.headers.cookie;
 
-    const time = 86400;
+    const time = 86400; //1 ngày
     //expires chỉ nhận định dạng UTC
-    var expires = new Date(new Date().getTime() + time * 1000).toDateString();
+    //new Date().getTime() => Số mili giây tính từ 00:00:00 1/1/1970 đến thời điểm hiện tại
 
-    res.setHeader("Set-Cookie", `age = 22 ; expires=${expires}`);
+    //new Date() => Trả về đối tượng thời gian của thời điểm hiện tại
+
+    //new Date(time) => Trả về đối tượng của thời điểm mong muốn
+
+    // console.log(new Date());
+
+    var expires = new Date(new Date().getTime() + time * 1000).toUTCString();
+
+    //Set cookie
+    // res.setHeader("Set-Cookie", `age=40; expires=${expires}; HttpOnly`);
+
+    //Xóa cookie
+    res.setHeader("Set-Cookie", `age=; expires=${new Date().toUTCString()}`);
+
     res.end("Sản phẩm");
   };
 }
