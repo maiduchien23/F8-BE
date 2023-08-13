@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const session = require("express-session"); // Thêm dòng này
+const session = require("express-session"); 
 const axios = require("axios");
 const path = require("path");
 const fs = require("fs");
@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: "key", resave: true, saveUninitialized: true })); // Thêm dòng này
+app.use(session({ secret: "key", resave: true, saveUninitialized: true })); 
 app.use(express.static(__dirname));
 
 const dataFilePath = path.join(__dirname, "data", "data.json");
@@ -30,7 +30,7 @@ app.post("/send-otp", (req, res) => {
     return res.status(400).send("Invalid phone number");
   }
 
-  req.session.phone = phoneNumber; // Lưu số điện thoại vào phiên làm việc
+  req.session.phone = phoneNumber; 
 
   res.redirect("/otp");
 });

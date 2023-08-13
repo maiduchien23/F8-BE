@@ -7,6 +7,7 @@ let url = require("url");
 const fs = require("fs"); //Xử lý file
 const home = require("./modules/home");
 const products = require("./modules/products");
+const upload = require("./modules/upload");
 
 const hostname = "localhost"; //Địa chỉ ip của server, hoặc hostname
 //Mặc định trên máy tính cá nhân là: 127.0.01
@@ -43,16 +44,25 @@ const server = http.createServer((req, res) => {
       };
 
       res.setHeader("Content-Type", contentTypes[ext]);
+
       res.end(content);
     });
   }
 
-  if (pathname === "/") {
+  if (pathname === "") {
     home.index(req, res);
   } else if (pathname === "/san-pham") {
     products.index(req, res);
   } else if (pathname === "/san-pham/them") {
     products.add(req, res);
+  } else if (pathname === "/upload") {
+    if (req.method === "POST") {
+      upload.handleLoad(req, res);
+    } else {
+      upload.showForm(req, res);
+    }
+  } else if (pathname === "/xem-san-pham") {
+    products.find(req, res);
   }
 });
 

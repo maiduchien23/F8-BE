@@ -73,6 +73,17 @@ class Products extends Base {
       });
     }
   };
+
+  find = (req, res) => {
+    const cookie = req.headers.cookie;
+
+    const time = 86400;
+    //expires chỉ nhận định dạng UTC
+    var expires = new Date(new Date().getTime() + time * 1000).toDateString();
+
+    res.setHeader("Set-Cookie", `age = 22 ; expires=${expires}`);
+    res.end("Sản phẩm");
+  };
 }
 
 module.exports = new Products();
