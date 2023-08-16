@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <% if (error === 'invalid') { %>
+    <p style="color: red">Thông tin tài khoản không chính xác.</p>
+    <% } %> <% if (error === 'empty') { %>
+    <p style="color: red">Vui lòng nhập đầy đủ thông tin.</p>
+    <% } %>
+    <form method="POST" action="/login">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" /><br />
+      <% if (error === 'empty' && (!email || email.trim() === '')) { %>
+      <p style="color: red">Vui lòng nhập email.</p>
+      <% } %>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" /><br />
+      <% if (error === 'empty' && !password) { %>
+      <p style="color: red">Vui lòng nhập mật khẩu.</p>
+      <% } %>
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>
