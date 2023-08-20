@@ -1,0 +1,86 @@
+<!-- testimonial section start -->
+<div class="client_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="client_taital"><%= testimonialInfo.title%></h1>
+        <p class="client_text"><%= testimonialInfo.desc%></p>
+      </div>
+    </div>
+  </div>
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-ride="carousel"
+  >
+    <ol class="carousel-indicators">
+      <li
+        data-target="#carouselExampleIndicators"
+        data-slide-to="0"
+        class="active"
+      ></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="client_section_2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="testimonial_section_2">
+                  <h4 class="client_name_text">
+                    <%= listTestimonials[0].nameUser%>
+                    <span class="quick_icon"
+                      ><img src="/assets/images/quick-icon.png"
+                    /></span>
+                  </h4>
+                  <p class="customer_text"><%= listTestimonials[0].comment%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="client_section_2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="testimonial_section_2">
+                  <h4 class="client_name_text">
+                    <%= listTestimonials[1].nameUser%>
+                    <span class="quick_icon"
+                      ><img src="assets/images/quick-icon.png"
+                    /></span>
+                  </h4>
+                  <p class="customer_text"><%= listTestimonials[1].comment%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="client_section_2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="testimonial_section_2">
+                  <h4 class="client_name_text">
+                    <%= listTestimonials[2].nameUser%>
+                    <span class="quick_icon"
+                      ><img src="/assets/images/quick-icon.png"
+                    /></span>
+                  </h4>
+                  <p class="customer_text"><%= listTestimonials[2].comment%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- testimonial section end -->
