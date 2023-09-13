@@ -1,0 +1,21 @@
+<h1>Danh sach san pham</h1>
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th width="50%">STT</th>
+      <th>Ten</th>
+      <th>Email</th>
+      <th width="10%">Trang thai</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customerList.forEach((customer, index) => { %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td><%= customer.name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.status === 1 ? 'Active' : 'Inactive' %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
