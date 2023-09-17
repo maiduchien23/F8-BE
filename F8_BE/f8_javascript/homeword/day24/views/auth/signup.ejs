@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <h2 class="text-center">Đăng ký tài khoản</h2>
+    <% if(msg?.length) {%>
+    <div class="alert alert-danger text-center"><%= msg %></div>
+    <% }%>
+    <form action="" method="post">
+      <div class="mb-3">
+        <label for="">Họ và Tên</label>
+        <input type="text" class="form-control" name="name" placeholder="Họ và
+        tên..." value="<%= name ?? "" %>" />
+      </div>
+      <div class="mb-3">
+        <label for="">Email</label>
+        <input type="email" class="form-control" name="email"
+        placeholder="Email..." value="<%= email ?? ""%>" />
+      </div>
+      <div class="mb-3">
+        <label for="">Mật khẩu</label>
+        <input type="password" class="form-control" name="password"
+        placeholder="Mật khẩu..." value="<%= password ?? "" %>" />
+      </div>
+      <div class="mb-3">
+        <label for="">Nhập lại mật khẩu</label>
+        <input type="password" class="form-control" name="retype"
+        placeholder="Mật khẩu..." value="<%= retype ?? ""%>" />
+      </div>
+      <div class="d-grid mb-2">
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+      </div>
+      <div>
+        <p>
+          Bạn đã có tài khoản? Đăng nhập
+          <a href="/auth/login">tại đây</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
