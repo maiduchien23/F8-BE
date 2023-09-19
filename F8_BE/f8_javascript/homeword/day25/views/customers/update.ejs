@@ -1,0 +1,30 @@
+<h1>Sửa khách hàng</h1>
+
+<% if (msg?.length) { %>
+  <div class="alert alert-danger"><%= msg %></div>
+<% } %>
+
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="name">Tên</label>
+    <input type="text" name="name" placeholder="Tên..." class="form-control" value="<%= customer.name %>">
+    <span class="text-danger"><%= validate.getError(errors, "name") %></span>
+  </div>
+
+  <div class="mb-3">
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="Email..." class="form-control" value="<%= customer.email %>">
+    <span class="text-danger"><%= validate.getError(errors, "email") %></span>
+  </div>
+
+  <div class="mb-3">
+    <label for="status">Trạng thái</label>
+    <select name="status" class="form-select">
+      <option value="0" <%= customer.status === 0 ? 'selected' : '' %>>Chưa kích hoạt</option>
+      <option value="1" <%= customer.status === 1 ? 'selected' : '' %>>Kích hoạt</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success">Cập nhật</button>
+  <a href="/customers" class="btn btn-danger">Hủy</a>
+</form>
