@@ -1,7 +1,7 @@
 <h1>Thêm khách hàng</h1>
 <% if (msg?.length) { %>
 <div class="alert alert-danger"><%= msg %></div>
-<%  } %>
+<% } %>
 <form action="" method="post">
   <div class="mb-3">
     <label for="">Tên</label>
@@ -10,13 +10,25 @@
   </div>
   <div class="mb-3">
     <label for="">Email</label>
-    <input type="text" name="email" placeholder="Email..." class="form-control" />
+    <input
+      type="text"
+      name="email"
+      placeholder="Email..."
+      class="form-control"
+    />
     <span class="text-danger"><%= validate.getError(errors, 'email') %></span>
   </div>
   <div class="mb-3">
     <label for="">Mật khẩu</label>
-    <input type="password" name="password" placeholder="Mật khẩu..." class="form-control" />
-    <span class="text-danger"><%= validate.getError(errors, 'password') %></span>
+    <input
+      type="password"
+      name="password"
+      placeholder="Mật khẩu..."
+      class="form-control"
+    />
+    <span class="text-danger"
+      ><%= validate.getError(errors, 'password') %></span
+    >
   </div>
   <div class="mb-3">
     <label for="">Trạng thái</label>

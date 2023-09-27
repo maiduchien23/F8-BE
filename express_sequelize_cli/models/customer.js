@@ -13,8 +13,26 @@ module.exports = (sequelize, DataTypes) => {
   }
   Customer.init(
     {
-      id: DataTypes.NUMBER,
-      name: DataTypes.STRING,
+      id: {
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+      },
+
+      name: {
+        type: DataTypes.STRING,
+      },
+
+      email: {
+        type: DataTypes.STRING,
+      },
+
+      status: {
+        type: DataTypes.BOOLEAN,
+      },
+
+      phone: {
+        type: DataTypes.STRING(15),
+      },
     },
     {
       sequelize,

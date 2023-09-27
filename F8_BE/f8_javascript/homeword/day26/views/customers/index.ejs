@@ -3,9 +3,6 @@
 <% if (msg?.length) { %>
 <div class="alert alert-success"><%= msg %></div>
 <%  } %>
-<% if (msgD?.length) { %>
-  <div class="alert alert-success"><%= msgD %></div>
-  <%  } %>
 <form action="" class="mb-2">
   <div class="row">
     <div class="col-3">
@@ -23,48 +20,41 @@
     </div>
   </div>
 </form>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="5%">STT</th>
+      <th>Tên</th>
+      <th>Email</th>
+      <th width="10%">Trạng thái</th>
+      <th width="10%">Thời gian</th>
+      <th width="5%">Sửa</th>
+      <th width="5%">Xóa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customerList.forEach((customer, index) => {
+        %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td><%= customer.name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.status === 1 ? 'Active': 'Inactive' %></td>
+      <td><%= moment(customer.created_at).format('DD/MM/YYYY hh:mm:ss') %></td>
+      <td>
+        <a href="/customers/edit/<%= customer.id %>" class="btn btn-warning btn-sm">Sửa</a>
+      </td>
+      <td>
+        <form action="/customers/destroy/<%= customer.id %>" onsubmit="return confirm('Bạn có chắc chắn?')" method="post">
+          <button class="btn btn-danger btn-sm" type="submit">Xóa</button>
+        </form>
+      </td>
+    </tr>
+    <%
+    }) %>
 
-<form action="/customers/delete_a_lot" onsubmit="return confirm('Bạn có chắc chắn?')" method="post">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th><input type="checkbox" id="vehicle1" name="vehicle1" value=""></th>
-        <th width="5%">STT</th>
-        <th>Tên</th>
-        <th>Email</th>
-        <th width="10%">Trạng thái</th>
-        <th width="10%">Thời gian</th>
-        <th width="5%">Sửa</th>
-        <th width="5%">Xóa</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% customerList.forEach((customer, index) => {
-          %>
-      <tr>
-        <td><input type="checkbox" name="<%= customer.id %>"></td>
-        <td><%= index+1 %></td>
-        <td><%= customer.name %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.status === 1 ? 'Active': 'Inactive' %></td>
-        <td><%= moment(customer.created_at).format('DD/MM/YYYY hh:mm:ss') %></td>
-        <td>
-          <a href="/customers/edit/<%= customer.id %>" class="btn btn-warning btn-sm">Sửa</a>
-        </td>
-        <td>
-            <input class="btn btn-danger btn-sm" type="submit" name="<%=customer.email%>" value="Xóa"/>
-        </td>
-      </tr>
-      <%
-      }) %>
-
-    </tbody>
-  </table>
-
-  <input class="btn btn-danger" type="submit" name="" value="Xóa đã chọn"/>
-
-</form>
-
+  </tbody>
+</table>
 <% if (totalPage > 1) { %>
 <nav class="d-flex justify-content-end">
   <ul class="pagination">

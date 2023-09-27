@@ -1,9 +1,8 @@
 {
-
   "development": {
     "username": "root",
     "password": "23022003",
-    "database": "f8_backend_cli",
+    "database": "f8_login",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": "3307",

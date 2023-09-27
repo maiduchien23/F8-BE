@@ -15,10 +15,19 @@ module.exports = {
 
     return queryInterface.bulkInsert("customers", [
       {
-        name: "Hien",
-        email: "hien@gmail.com",
+        name: "Hoàng An",
+        email: "hoangan.web@gmail.com",
         status: 1,
-        phone: "0869061648",
+        phone: "0388875179",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        name: "Lưu Anh Quân",
+        email: "luuanhquan@gmail.com",
+        status: 1,
+        phone: "0388875178",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

@@ -1,23 +1,8 @@
 const { check } = require("express-validator");
 const Customer = require("../models/Customer");
 const { Op } = require("sequelize");
-const db = require("../models/index");
 
 module.exports = () => {
-  //Validate password
-  // - Nếu ở trang edit -> Không cần validate password
-  // - Nếu ở trang create -> Validate password
-  // let passwordRule = [
-  //   check("password", "Mật khẩu bắt buộc phải nhập").notEmpty(),
-  //   check("password", "Mật khẩu không đủ mạnh").isStrongPassword({
-  //     minLength: 6,
-  //     minLowercase: 1,
-  //     minUppercase: 1,
-  //     minNumbers: 1,
-  //     minSymbols: 1,
-  //   }),
-  // ];
-
   return [
     check("name", "Tên bắt buộc phải nhập").notEmpty(),
     check("name", "Tên phải từ 5 ký tự trở lên").isLength({ min: 5 }),
@@ -26,7 +11,7 @@ module.exports = () => {
     check("email").custom(async (emailVal, { req }) => {
       const { id } = req.params;
       //Truy vấn database
-      const customer = db.Customer;
+      const customer = await Customer;
       const customerData = await customer.findOne({
         where: {
           email: emailVal,

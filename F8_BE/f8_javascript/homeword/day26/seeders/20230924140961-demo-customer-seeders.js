@@ -7,9 +7,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("Customers", [
       {
-        name: "Doe",
-        email: "example@example.com",
-        password: md5("123@Aab"),
+        name: "Hien",
+        email: "hien@gmail.com",
+        password: md5("123456@Aab"),
         status: 1,
         province_id: 2,
         created_at: new Date(),
@@ -17,9 +17,9 @@ module.exports = {
         deleted_at: new Date(),
       },
       {
-        name: "John",
-        email: "example123@example.com",
-        password: md5("123@Aab"),
+        name: "Hoang An",
+        email: "hoangan@gmail.com",
+        password: md5("123456@Aab"),
         status: 1,
         province_id: 2,
         created_at: new Date(),
