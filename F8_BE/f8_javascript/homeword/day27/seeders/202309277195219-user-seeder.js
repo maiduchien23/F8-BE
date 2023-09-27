@@ -31,7 +31,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: "Nguyễn B",
+        name: "Nguyễn Văn B",
         email: "nguyenb@gmail.com",
         password: md5("Bb@0123456"),
         role: 0,
