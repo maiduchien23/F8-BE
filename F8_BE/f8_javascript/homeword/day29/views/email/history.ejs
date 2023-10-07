@@ -1,0 +1,57 @@
+<h1 class="col-6">Lịch sử gửi Email</h1>
+<table class="table table-boredered">
+    <thead class="table-dark">
+        <tr>
+            <th width="5%">STT</th>
+            <th>Email gửi đến</th>
+            <th>Tiêu đề</th>
+            <th width="15%">Trạng thái</th>
+            <th width="15%">Thời gian gửi</th>
+            <th width="10%">Xem chi tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% emailList.forEach((email, index) => { %>
+        <tr>
+            <td><%= index+1 %></td>
+            <td><%= email.email %></td>
+            <td><%= email.title %></td>
+            <td><%= email.status === 1 ? 'Đã xem' : 'Chưa xem' %></td>
+            <td><%= moment(email.created_at).format("DD/MM/YYYY") %></td>
+            <td>
+                <a
+                    href="/email/content/<%= email.id %>"
+                    class="btn btn-success mb-2"
+                    >Xem chi tiết</a
+                >
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% if(totalPage > 1) { %>
+<nav class="d-flex justify-content-end">
+    <ul class="pagination">
+        <% if(page > 1) { %>
+        <li class="page-item">
+            <a class="page-link" href="?<%= getPaginateUrl(req, +page - 1) %>"
+                >Trước</a
+            >
+        </li>
+        <% } %> <% for(let i = 1; i <= totalPage; i++) { %>
+        <li class="page-item <%= +page === +i ? 'active': '' %>">
+            <a class="page-link" href="?<%= getPaginateUrl(req, i) %>"
+                ><%= i %></a
+            >
+        </li>
+        <% } %> <% if(page < totalPage) { %>
+        <li class="page-item">
+            <a class="page-link" href="?<%= getPaginateUrl(req, +page + 1) %>"
+                >Sau</a
+            >
+        </li>
+        <% } %>
+    </ul>
+</nav>
+<% } %>
+<a href="/email" class="btn btn-success mb-2">Viết Email</a>

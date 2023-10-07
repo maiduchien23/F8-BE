@@ -1,0 +1,47 @@
+<h3 class="text-center">Form gửi email</h3>
+<div>
+    <% if(msg?.length) {%>
+    <div class="alert alert-success text-center"><%= msg ?? ""%></div>
+    <% }%>
+</div>
+<form action="" method="post">
+    <div class="mb-3">
+        <label for="">Email gửi đến</label>
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email..."
+            required
+        />
+    </div>
+    <div class="mb-3">
+        <label for="">Tiêu đề</label>
+        <input
+            type="text"
+            name="title"
+            class="form-control"
+            placeholder="Tiêu đề..."
+            required
+        />
+    </div>
+    <div class="mb-3">
+        <label for="">Nội dung</label>
+        <input
+            type="text"
+            name="content"
+            class="form-control"
+            placeholder="Nội dung..."
+            required
+        />
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Gửi email</button>
+    </div>
+    <div>
+        <p>
+            Xem lịch sử đã gửi email
+            <a href="/email/history">tại đây</a>
+        </p>
+    </div>
+</form>
