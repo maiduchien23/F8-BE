@@ -54,7 +54,15 @@ module.exports = {
   },
 
   loginGoogle: (req, res) => {
-    res.send("Google");
+    res.redirect("/");
+  },
+
+  loginFacebook: (req, res) => {
+    res.redirect("/");
+  },
+
+  loginGithub: (req, res) => {
+    res.redirect("/");
   },
 };
 
