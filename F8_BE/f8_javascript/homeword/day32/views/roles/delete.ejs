@@ -1,0 +1,21 @@
+<h2>Xóa Role</h2>
+
+<% if (error?.length) { %>
+<div class="col alert alert-danger"><%= error %></div>
+<% } %>
+
+<form action="/roles/delete/<%= role.id %>" method="post">
+  <div class="col mb-2">
+    <input
+      type="text"
+      class="form-control"
+      name="id"
+      placeholder="Tên role..."
+      readonly
+      value="<%= role.name %>"
+    />
+  </div>
+  <p>Bạn có chắc chắn muốn xóa vai trò này?</p>
+  <button type="submit" class="btn btn-danger">Xóa Role</button>
+  <a href="/roles" class="btn btn-secondary">Hủy</a>
+</form>
