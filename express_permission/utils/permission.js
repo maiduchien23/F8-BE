@@ -5,4 +5,9 @@ module.exports = {
       return permissionData.value;
     }
   },
+  isRole: (roleData, roleId) => {
+    return roleData.find((role) => {
+      return +role.id === +roleId;
+    });
+  },
 };

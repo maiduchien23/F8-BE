@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Link Shortener - Links</title>
+  </head>
+  <body>
+    <h1>Manage Your Links</h1>
+    <ul>
+      <% links.forEach((link) => { %>
+      <li>
+        <a href="<%= link.shortUrl %>"><%= link.shortUrl %></a>
+        - Original URL: <%= link.originalUrl %> -
+        <a href="/update/<%= link.id %>">Edit</a> -
+        <form method="post" action="/delete/<%= link.id %>">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

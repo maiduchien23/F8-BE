@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Link Shortener</title>
+  </head>
+  <body>
+    <% if (user) { %>
+    <h1>Welcome, <%= user.email %></h1>
+    <form method="post" action="/">
+      <label for="originalUrl">Enter the URL to shorten:</label>
+      <input type="text" name="originalUrl" id="originalUrl" required />
+      <button type="submit">Shorten</button>
+    </form>
+    <% } else { %>
+    <p>You need to <a href="/auth/login">log in</a> to use this service.</p>
+    <% } %>
+  </body>
+</html>

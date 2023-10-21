@@ -3,28 +3,30 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
-const passport = require("passport");
+const flash = require("connect-flash");
 const session = require("express-session");
+const methodOverride = require("method-override");
+const passport = require("passport");
 
+const model = require("./models/index");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var rolesRouter = require("./routes/roles");
-var authRouter = require("./routes/auth");
+const linkRouter = require("./routes/links");
+const authRouter = require("./routes/auth");
+
 const localPassport = require("./passport/localPassport");
-const AuthMiddleware = require("./middlewares/AuthMiddleware");
-const model = require("./models/index");
-const User = model.User;
 
 var app = express();
-
 app.use(
   session({
     secret: "f8",
     resave: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,17 +36,16 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(async function (id, done) {
-  const user = await User.findByPk(id);
+  const user = await model.User.findByPk(id);
   done(null, user);
 });
-
 passport.use("local", localPassport);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("layout", "layouts/layout");
-app.set("auth_layout", "layouts/auth_layout");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 app.use(expressLayouts);
 
 app.use(logger("dev"));
@@ -54,10 +55,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRouter);
-app.use(AuthMiddleware);
+app.use("/links", linkRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/roles", rolesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

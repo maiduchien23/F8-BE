@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Link Shortener - Edit Link</title>
+  </head>
+  <body>
+    <h1>Edit Link</h1>
+    <form method="post" action="/update/<%= link.id %>">
+      <label for="updatedOriginalUrl">New Original URL:</label>
+      <input
+        type="text"
+        name="updatedOriginalUrl"
+        id="updatedOriginalUrl"
+        required
+        value="<%= link.originalUrl %>"
+      />
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>

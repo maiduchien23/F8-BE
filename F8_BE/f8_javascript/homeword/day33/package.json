@@ -1,5 +1,5 @@
 {
-  "name": "express-permission",
+  "name": "day-33",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,10 +15,11 @@
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
-    "flash": "^1.1.0",
     "http-errors": "~1.6.3",
+    "method-override": "^3.0.0",
     "morgan": "~1.9.1",
-    "mysql2": "^3.6.1",
+    "mysql2": "^3.6.2",
+    "nanoid": "^3.3.6",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "sequelize": "^6.33.0"
