@@ -1,38 +1,31 @@
 require("dotenv").config();
-
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var authRouter = require("./routes/auth");
-const authApiKeyMiddleware = require("./middlewares/authApiKeyMiddleware");
+const authRouter = require("./routes/auth");
+const fileRouter = require("./routes/file");
 
 var app = express();
 
-app.use(cors());
+// view engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 app.use(logger("dev"));
-app.use(express.json()); //Nhận Content-Type: application/json
-/*
-{
-  "name": "Hoàng An",
-  "email": "hoangan.web@gmail.com"
-}
-*/
-app.use(express.urlencoded({ extended: false })); //Nhận Content-Type: application/x-www-urlendcoded
-// => name=Hoàng+An&email=hoangan.web@gmail.com
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", authApiKeyMiddleware, usersRouter);
-app.use("/auth", authRouter);
-
+app.use("/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/file", fileRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -46,7 +39,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json({ error: "Không tìm thấy" });
+  res.render("error");
 });
 
 module.exports = app;
