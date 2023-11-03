@@ -18,6 +18,7 @@ module.exports = {
       });
       return;
     }
+
     const { password: hash } = user;
     const status = bcrypt.compareSync(password, hash);
     if (!status) {
@@ -27,20 +28,14 @@ module.exports = {
       });
       return;
     }
-    const { JWT_SECRET, JWT_EXPIRE } = process.env;
-    const token = jwt.sign(
-      {
-        data: {
-          userId: user.id,
-        },
-      },
-      JWT_SECRET,
-      { expiresIn: JWT_EXPIRE * 60 },
-    );
+
+    const token = jwt.createToken();
+    const refreshToken = jwt.refreshToken();
 
     res.json({
       status: "success",
       accessToken: token,
+      refreshToken,
     });
   },
 
@@ -70,4 +65,5 @@ module.exports = {
       });
     }
   },
+  refreshToken: async (req, res) => {},
 };
