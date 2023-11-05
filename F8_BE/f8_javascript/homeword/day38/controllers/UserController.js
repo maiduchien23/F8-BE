@@ -4,10 +4,11 @@ const cache = new NodeCache();
 const model = require("../models/index");
 const User = model.User;
 
+const getUsersFromDB = async () => {
+  return await User.findAll({});
+};
 module.exports = {
-  getUsersFromDB: async () => {
-    return await User.findAll({});
-  },
+  getUsersFromDB,
 
   getUsers: async (req, res) => {
     const cookieName = "users";
@@ -17,7 +18,7 @@ module.exports = {
       const cachedUsers = cache.get(cookieValue);
       res.json(cachedUsers);
     } else {
-      const users = await this.getUsersFromDB();
+      const users = await getUsersFromDB();
       const newCacheKey = uuid();
       cache.set(newCacheKey, users, 900);
       res.cookie(cookieName, newCacheKey, { maxAge: 900000, httpOnly: true });
