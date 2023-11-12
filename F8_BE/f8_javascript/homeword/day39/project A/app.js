@@ -29,12 +29,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id, user.currentDevice);
+  done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
+  console.log("1");
   const user = await model.User.findByPk(id);
-  user.currentDevice = req.session.currentDevice;
   done(null, user);
 });
 

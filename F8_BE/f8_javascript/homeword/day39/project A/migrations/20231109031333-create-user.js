@@ -18,9 +18,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING(100),
       },
-      currentDevice: {
-        type: Sequelize.STRING(100),
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
